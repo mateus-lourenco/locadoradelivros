@@ -1,7 +1,6 @@
 package br.edu.unifacisa.si.locadoradelivros.domain;
 
-import java.util.Date;
-
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,21 +17,19 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "emprestimos")
-public class Emprestimo {
+@Table(name = "resenhas")
+public class Resenha {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(length = 1000)
+	private Integer id;
+	private String texto;
 	
-	@Column()
-	private Date dataEmprestimo;
-	private Date dataDevolucao;
+	@Column(length = 2)
+	private int nota;
 	
-	@ManyToOne
-	private Usuario usuario;
-	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Livro livro;
 	
 }

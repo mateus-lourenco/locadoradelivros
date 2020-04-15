@@ -3,8 +3,10 @@ package br.edu.unifacisa.si.locadoradelivros.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,25 +26,26 @@ import lombok.NoArgsConstructor;
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(length = 1000)
 	private Integer id;
 
-	@Column(length = 50)
+	@Column(length = 200)
 	private String nome;
 
-	@Column(unique = true, nullable = false)
+	@Column(unique = true, length = 200, nullable = false)
 	private String email;
 
-	@Column(unique = true, nullable = false)
+	@Column(unique = true, length = 200, nullable = false)
 	private String login;
 	
 	@Transient
 	private String senha;
 	
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Livro> livros = new ArrayList<Livro>();
 	
-	@OneToMany(mappedBy = "usuario")
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
 
 }

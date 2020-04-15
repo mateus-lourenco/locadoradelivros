@@ -3,8 +3,10 @@ package br.edu.unifacisa.si.locadoradelivros.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,31 +27,32 @@ import lombok.NoArgsConstructor;
 public class Livro {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	@Column(length = 100)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(length = 1000)
+	private Integer id;
+
+	@Column(length = 255)
 	private String titulo;
-	
+
 	@Column(length = 4)
 	private int anoPub;
 
-	@Column(unique = true, nullable = true)
+	@Column(unique = true, length = 100, nullable = true)
 	private String isbn;
-	
-	@ManyToOne
+
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Usuario usuario;
-	
-	@OneToMany(mappedBy = "livro")
+
+	@OneToMany(mappedBy = "livro", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Emprestimo> emprestimos = new ArrayList<Emprestimo>();
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Editora editora;
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Autor> autores = new ArrayList<Autor>();
-	
-	@OneToMany(mappedBy = "livro")
+
+	@OneToMany(mappedBy = "livro", fetch = FetchType.LAZY)
 	private List<Resenha> resenhas = new ArrayList<Resenha>();
 
 }
