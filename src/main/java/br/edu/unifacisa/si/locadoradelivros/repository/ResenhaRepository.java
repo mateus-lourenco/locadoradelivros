@@ -9,7 +9,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import br.edu.unifacisa.si.locadoradelivros.domain.Resenha;
 
-@RepositoryRestResource(collectionResourceRel = "resenhas", path = "resenhas", exported = false)
+@RepositoryRestResource(collectionResourceRel = "resenhas", path = "resenhas", exported = true)
 public interface ResenhaRepository extends PagingAndSortingRepository<Resenha, Integer> {
 	
 	List<Resenha> findAll();

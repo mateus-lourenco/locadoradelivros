@@ -10,7 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import br.edu.unifacisa.si.locadoradelivros.domain.Autor;
 
-@RepositoryRestResource(collectionResourceRel = "autores", path = "autores", exported = false)
+@RepositoryRestResource(collectionResourceRel = "autores", path = "autores", exported = true)
 public interface AutorRepository extends PagingAndSortingRepository<Autor, Integer> {
 	
 	List<Autor> findAll();

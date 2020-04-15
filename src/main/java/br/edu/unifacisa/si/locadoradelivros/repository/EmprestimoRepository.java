@@ -11,7 +11,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import br.edu.unifacisa.si.locadoradelivros.domain.Emprestimo;
 
-@RepositoryRestResource(collectionResourceRel = "emprestimos", path = "emprestimos", exported = false)
+@RepositoryRestResource(collectionResourceRel = "emprestimos", path = "emprestimos", exported = true)
 public interface EmprestimoRepository extends PagingAndSortingRepository<Emprestimo, Integer> {
 	
 	List<Emprestimo> findAll();

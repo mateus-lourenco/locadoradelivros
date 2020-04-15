@@ -11,7 +11,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import br.edu.unifacisa.si.locadoradelivros.domain.Livro;
 
-@RepositoryRestResource(collectionResourceRel = "livros", path = "livros", exported = false)
+@RepositoryRestResource(collectionResourceRel = "livros", path = "livros", exported = true)
 public interface LivroRepository extends PagingAndSortingRepository<Livro, Integer> {
 
 	Optional<Livro> findById(@Param("id") Integer id);

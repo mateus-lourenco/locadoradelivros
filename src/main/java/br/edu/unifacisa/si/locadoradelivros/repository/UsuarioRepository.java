@@ -10,7 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import br.edu.unifacisa.si.locadoradelivros.domain.Usuario;
 
 
-@RepositoryRestResource(collectionResourceRel = "usuarios", path = "usuarios")
+@RepositoryRestResource(collectionResourceRel = "usuarios", path = "usuarios", exported = true)
 public interface UsuarioRepository extends PagingAndSortingRepository<Usuario, Integer> {
 
 	List<Usuario> findAll();

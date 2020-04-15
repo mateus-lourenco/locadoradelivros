@@ -10,7 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import br.edu.unifacisa.si.locadoradelivros.domain.Editora;
 
-@RepositoryRestResource(collectionResourceRel = "editoras", path = "editoras", exported = false)
+@RepositoryRestResource(collectionResourceRel = "editoras", path = "editoras", exported = true)
 public interface EditoraRepository extends PagingAndSortingRepository<Editora, Integer> {
 	
 	List<Editora> findAll();
